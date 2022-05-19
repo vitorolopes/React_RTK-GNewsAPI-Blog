@@ -15,7 +15,7 @@
   font-weight: 700;
 }
 
-.navbar__user__data {
+.navbar-user-data {
   display: flex;
   align-items: center;
 }
@@ -23,6 +23,7 @@
 .user {
   cursor: pointer;
   border: 2px solid rgb(0, 255, 234);
+  margin-right: 10px;
 }
 
 .signedIn {
@@ -31,7 +32,7 @@
   cursor: pointer;
 }
 
-.logout__button {
+.logout-button {
   margin-left: 20px;
   padding: 12px 25px;
   border-radius: 50px;

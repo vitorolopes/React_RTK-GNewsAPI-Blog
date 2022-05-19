@@ -3,7 +3,7 @@ import '../styling/home.css'
 import { GoogleLogin } from 'react-google-login';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { setSignedIn } from '../features/userSlice';
+import { setSignedIn, setData } from '../features/userSlice';
 
 
 
@@ -13,10 +13,10 @@ const Homepage = () => {
 
   const dispatch = useDispatch();
 
-  const responseGoogle = (response) => {
-    console.log(response); // --> Info about the user such as givenName in response.profileObj
-        //!  reset isSignedIn to true
+  const login = (response) => {
+    // console.log(response); // --> Info about the user such as givenName in response.profileObj
     dispatch(setSignedIn(true))
+    dispatch(setData(response.profileObj))
   }
   
   return (
@@ -42,10 +42,10 @@ const Homepage = () => {
               </button>
             )}
             buttonText="Login"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
+            onSuccess={login} // responseGoogle in react-google-login
+            onFailure={login}
             cookiePolicy={'single_host_origin'}
-            //  TODO isSignedIn={true}
+            isSignedIn={true}
             //! isSignedIn={true} attribute will call 
             //! onSuccess callback on load to keep the user signed in.
           />
