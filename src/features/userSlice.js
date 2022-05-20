@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     isSignedIn: false,
     userData: null,
-
-    searchInput: "sports"
+    searchInput: "sports",
+    blogData: null
 }
 
 const userSlice = createSlice({
@@ -20,12 +20,17 @@ const userSlice = createSlice({
 
         setSearchInput: (state, action) => {
             state.searchInput = action.payload
+        },
+
+        setBlogData: (state, action) => {
+            state.blogData = action.payload
         }
 
     }
 })
 
-export const {setSignedIn, setUserData, setSearchInput, } = userSlice.actions
+export const {setSignedIn, setUserData, 
+              setSearchInput, setBlogData } = userSlice.actions
 
 export default userSlice.reducer
 

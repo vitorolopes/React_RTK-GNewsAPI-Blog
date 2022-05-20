@@ -21,7 +21,7 @@ const Homepage = () => {
   
   return (
     <section className='homepage'>
-      {isSignedIn ?  ("Signed In") : (
+      {isSignedIn ?  ("") : (
         <div className="message">
           <h2>📗</h2>
           <h1>A Readers favourite place!</h1>

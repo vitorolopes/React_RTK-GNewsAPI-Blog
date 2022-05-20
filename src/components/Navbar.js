@@ -5,7 +5,7 @@ import { useSelector, useDispatch} from 'react-redux';
 import { Avatar } from '@material-ui/core';
 import { GoogleLogout } from 'react-google-login';
 
-import { setSignedIn, setSearchInput, setUserData} from '../features/userSlice';
+import { setSignedIn, setSearchInput, setUserData, setBlogData} from '../features/userSlice';
 
 const Navbar = () => {
 
@@ -18,6 +18,7 @@ const Navbar = () => {
   const logout = () => {
     dispatch(setSignedIn(false));
     dispatch(setUserData(null));
+    dispatch(setBlogData(null));
   }
 
   const handleClick = (e) => { 

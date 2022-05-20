@@ -1,8 +1,8 @@
-.blog__page {
+.blog-page {
   padding: 30px 170px;
 }
 
-.blog__page__header {
+.blog-page-header {
   letter-spacing: -1px;
   font-size: 35px;
 }
@@ -71,7 +71,7 @@
   padding-bottom: 30px;
 }
 
-.no__blogs {
+.no-blogs {
   font-size: 25px;
   font-weight: 500;
   line-height: 1.5em;
