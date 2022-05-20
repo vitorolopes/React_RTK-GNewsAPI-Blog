@@ -1,21 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../styling/navbar.css';
 
 import { useSelector, useDispatch} from 'react-redux';
 import { Avatar } from '@material-ui/core';
 import { GoogleLogout } from 'react-google-login';
 
-import { setSignedIn } from '../features/userSlice';
+import { setSignedIn, setSearchInput, setUserData} from '../features/userSlice';
 
 const Navbar = () => {
 
-  const {isSignedIn, userData} = useSelector( store => store.user)
-  // console.log(userData);
+  const {isSignedIn, userData, searchInput} = useSelector( store => store.user)
+
+  const [inputText, setInputText] = useState(searchInput)
 
   const dispatch = useDispatch()
 
   const logout = () => {
-    dispatch(setSignedIn(false))
+    dispatch(setSignedIn(false));
+    dispatch(setUserData(null));
+  }
+
+  const handleClick = (e) => { 
+    e.preventDefault();
+    dispatch(setSearchInput(inputText))
   }
 
   return (
@@ -23,7 +30,22 @@ const Navbar = () => {
 
         <header className="navbar-header">BlogMania 💬</header>
 
-        {isSignedIn ?  <input type="text"/> : ""}
+        {isSignedIn &&
+          <div className='blog-search'>
+            <input type="text"
+                   className='search'
+                   placeholder="Search for a blog"
+                   value={inputText}
+                   onChange={ e => setInputText(e.target.value)}
+            /> 
+            <button 
+                className='submit'
+                onClick={handleClick}
+            >
+                  Search
+            </button>
+          </div>
+        }
 
         {isSignedIn ? (
               <div className='navbar-user-data'>
@@ -41,7 +63,7 @@ const Navbar = () => {
                                 disabled={renderProps.disabled}
                                 className="logout-button" 
                         >
-                          Logout
+                          Logout 😞
                         </button> 
                       )}
                       onLogoutSuccess={logout}

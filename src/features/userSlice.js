@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     isSignedIn: false,
-    userData: null
+    userData: null,
+
+    searchInput: "sports"
 }
 
 const userSlice = createSlice({
@@ -11,15 +13,19 @@ const userSlice = createSlice({
     reducers: {
         setSignedIn : (state, action) => {
             state.isSignedIn = action.payload
-        },
-        
-        setData : (state, action) => {
+        },    
+        setUserData : (state, action) => {
             state.userData = action.payload
+        },
+
+        setSearchInput: (state, action) => {
+            state.searchInput = action.payload
         }
+
     }
 })
 
-export const {setSignedIn, setData} = userSlice.actions
+export const {setSignedIn, setUserData, setSearchInput, } = userSlice.actions
 
 export default userSlice.reducer
 

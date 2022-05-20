@@ -3,7 +3,7 @@ import '../styling/home.css'
 import { GoogleLogin } from 'react-google-login';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { setSignedIn, setData } from '../features/userSlice';
+import { setSignedIn, setUserData } from '../features/userSlice';
 
 
 
@@ -16,7 +16,7 @@ const Homepage = () => {
   const login = (response) => {
     // console.log(response); // --> Info about the user such as givenName in response.profileObj
     dispatch(setSignedIn(true))
-    dispatch(setData(response.profileObj))
+    dispatch(setUserData(response.profileObj))
   }
   
   return (
